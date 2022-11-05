@@ -1,8 +1,8 @@
 import { Component } from 'react';
 import Box from 'components/Box/Box';
 import { nanoid } from 'nanoid';
-import { Input } from './Input/Input';
-import { Section } from 'components/Section/Section';
+// import { Input } from './Input/Input';
+// import { Section } from 'components/Section/Section';
 import { Form } from 'components/Phonebook/Form/Form';
 import { Contacts } from 'components/Phonebook/Contacts/Contacts';
 
