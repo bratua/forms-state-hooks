@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
-import Box from 'components/Box/Box';
+// import Box from 'components/Box/Box';
 import { StyledForm } from './Form.styled';
 
 export class Form extends Component {
