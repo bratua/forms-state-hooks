@@ -5,15 +5,12 @@ import { nanoid } from 'nanoid';
 // import { Section } from 'components/Section/Section';
 import { Form } from 'components/Phonebook/Form/Form';
 import { Contacts } from 'components/Phonebook/Contacts/Contacts';
+import { Filter } from 'components/Phonebook/Filter/Filter';
 
 export class Phonebook extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
+    filter: '',
   };
 
   handleSubmitForm = ({ name, number }) => {
@@ -24,7 +21,21 @@ export class Phonebook extends Component {
     });
   };
 
+  filterChange = e => {
+    const filterNormalize = e.currentTarget.value.toLowerCase();
+    this.setState({ filter: filterNormalize });
+  };
+
+  filtred = () => {
+    const { filter, contacts } = this.state;
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
+  };
+
   render() {
+    const filtredContacts = this.filtred();
+
     return (
       <Box
         width="300px"
@@ -37,7 +48,8 @@ export class Phonebook extends Component {
         pb="20px"
       >
         <Form onSubmitForm={this.handleSubmitForm} />
-        <Contacts contacts={this.state} />
+        <Filter value={this.state.filter} onChange={this.filterChange} />
+        <Contacts contacts={filtredContacts} />
       </Box>
     );
   }
