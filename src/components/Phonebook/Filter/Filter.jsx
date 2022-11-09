@@ -1,4 +1,4 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import Box from 'components/Box/Box';
 
 export const Filter = ({ value, onChange }) => (
