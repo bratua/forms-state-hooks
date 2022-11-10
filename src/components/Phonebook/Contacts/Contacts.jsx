@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { Section } from 'components/Section/Section';
+import { StyledContactsLi, StyledContactsUl } from './Contacts.styled';
 export class Contacts extends Component {
   renderContacts = contacts => {
     return contacts.map(contact => (
-      <li key={contact.id}>
+      <StyledContactsLi key={contact.id}>
         {contact.name}: {contact.number}
-      </li>
+      </StyledContactsLi>
     ));
   };
 
@@ -14,7 +15,9 @@ export class Contacts extends Component {
   render() {
     return (
       <Section title="Contacts">
-        <ul>{this.renderContacts(this.props.contacts)}</ul>
+        <StyledContactsUl>
+          {this.renderContacts(this.props.contacts)}
+        </StyledContactsUl>
       </Section>
     );
   }
