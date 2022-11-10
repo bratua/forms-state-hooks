@@ -30,10 +30,10 @@ export class Form extends Component {
     return (
       <Section title="Phonebook">
         <StyledForm onSubmit={this.submit}>
-          <label htmlFor="nameId">
+          <label htmlFor={this.nameId}>
             <h3>Name</h3>
             <input
-              id="nameId"
+              id={this.nameId}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -44,10 +44,10 @@ export class Form extends Component {
             ></input>
           </label>
 
-          <label htmlFor="numberId">
+          <label htmlFor={this.numberId}>
             <h3>Number</h3>
             <input
-              id="numberId"
+              id={this.numberId}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
