@@ -20,14 +20,15 @@ export class FormikPhonebook extends Component {
   };
 
   filterChange = e => {
-    const filterNormalize = e.currentTarget.value.toLowerCase();
-    this.setState({ filter: filterNormalize });
+    this.setState({ filter: e.currentTarget.value });
   };
 
   filtred = () => {
     const { filter, contacts } = this.state;
+    const filterNormalize = filter.toLowerCase();
+
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter)
+      contact.name.toLowerCase().includes(filterNormalize)
     );
   };
 

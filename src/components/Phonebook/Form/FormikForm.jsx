@@ -1,6 +1,10 @@
 import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
-import { StyledFormikForm } from './Form.styled';
+import {
+  StyledFormikForm,
+  StyledFormikField,
+  StyledFormikErrorMessage,
+} from './Form.styled';
 import * as yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 
@@ -41,24 +45,24 @@ export const FormikForm = ({ onSubmitForm }) => {
           <label htmlFor={nameId}>
             <h3>Name</h3>
 
-            <Field
+            <StyledFormikField
               id={nameId}
               type="text"
               name="name"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            ></Field>
-            <ErrorMessage name="name" component="div" />
+            ></StyledFormikField>
+            <StyledFormikErrorMessage name="name" component="div" />
           </label>
 
           <label htmlFor={numberId}>
             <h3>Number</h3>
-            <Field
+            <StyledFormikField
               id={numberId}
               type="tel"
               name="number"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            ></Field>
-            <ErrorMessage name="number" component="div" />
+            ></StyledFormikField>
+            <StyledFormikErrorMessage name="number" component="div" />
           </label>
           <button type="submit">Add contact</button>
         </StyledFormikForm>
