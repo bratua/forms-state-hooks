@@ -6,7 +6,7 @@ import {
   StyledFormikErrorMessage,
 } from './Form.styled';
 import * as yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 
 const initialValues = {
   name: '',
