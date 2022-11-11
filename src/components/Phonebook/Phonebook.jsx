@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid';
 // import { Section } from 'components/Section/Section';
 import { Form } from 'components/Phonebook/Form/Form';
 import { Contacts } from 'components/Phonebook/Contacts/Contacts';
-import { Filter } from 'components/Phonebook/Filter/Filter';
 
 export class Phonebook extends Component {
   state = {
