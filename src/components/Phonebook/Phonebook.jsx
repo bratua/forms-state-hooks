@@ -10,10 +10,13 @@ import { Filter } from 'components/Phonebook/Filter/Filter';
 export class Phonebook extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-1', name: 'Clarence Mcculloch', number: '123-12-63' },
+      { id: 'id-2', name: 'Keiren Emery', number: '483-25-09' },
+      { id: 'id-3', name: 'Eliot Simpson', number: '321-67-12' },
+      { id: 'id-4', name: 'Alfie-Lee Whitmore', number: '542-52-22' },
+      { id: 'id-5', name: 'Teddy Parkes', number: '131-22-22' },
+      { id: 'id-6', name: 'Zachariah Brandt', number: '451-69-69' },
+      { id: 'id-7', name: 'Kacie Hume', number: '777-77-77' },
     ],
     filter: '',
   };
@@ -71,10 +74,12 @@ export class Phonebook extends Component {
         pb="20px"
       >
         <Form onSubmitForm={this.handleSubmitForm} />
-        <Filter value={this.state.filter} onChange={this.filterChange} />
+        {/* <Filter value={this.state.filter} onChange={this.filterChange} /> */}
         <Contacts
           contacts={filtredContacts}
           onDeleteContact={this.deleteContact}
+          filterValue={this.state.filter}
+          filterOnChange={this.filterChange}
         />
       </Box>
     );

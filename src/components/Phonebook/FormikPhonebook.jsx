@@ -3,7 +3,6 @@ import Box from 'components/Box/Box';
 import { nanoid } from 'nanoid';
 import { FormikForm } from 'components/Phonebook/Form/FormikForm';
 import { Contacts } from 'components/Phonebook/Contacts/Contacts';
-import { Filter } from 'components/Phonebook/Filter/Filter';
 
 export class FormikPhonebook extends Component {
   state = {
@@ -65,10 +64,12 @@ export class FormikPhonebook extends Component {
         pb="20px"
       >
         <FormikForm onSubmitForm={this.handleSubmitForm} />
-        <Filter value={this.state.filter} onChange={this.filterChange} />
+        {/* <Filter value={this.state.filter} onChange={this.filterChange} /> */}
         <Contacts
           contacts={filtredContacts}
           onDeleteContact={this.deleteContact}
+          filterValue={this.state.filter}
+          filterOnChange={this.filterChange}
         />
       </Box>
     );
