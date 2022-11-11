@@ -34,6 +34,16 @@ export class Phonebook extends Component {
     return this.state.contacts.find(el => el.name === name);
   };
 
+  deleteContact = idContact => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== idContact
+        ),
+      };
+    });
+  };
+
   filterChange = e => {
     const filterNormalize = e.currentTarget.value.toLowerCase();
     this.setState({ filter: filterNormalize });
@@ -62,7 +72,10 @@ export class Phonebook extends Component {
       >
         <Form onSubmitForm={this.handleSubmitForm} />
         <Filter value={this.state.filter} onChange={this.filterChange} />
-        <Contacts contacts={filtredContacts} />
+        <Contacts
+          contacts={filtredContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Box>
     );
   }

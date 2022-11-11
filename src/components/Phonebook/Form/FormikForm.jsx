@@ -44,7 +44,6 @@ export const FormikForm = ({ onSubmitForm }) => {
         <StyledFormikForm autoComplete="off">
           <label htmlFor={nameId}>
             <h3>Name</h3>
-
             <StyledFormikField
               id={nameId}
               type="text"

@@ -9,6 +9,7 @@ export const StyledForm = styled.form`
 
   input {
     margin-bottom: 10px;
+    text-align: left;
   }
 
   h3 {
@@ -24,16 +25,18 @@ export const StyledFormikForm = styled(Form)`
 
   margin-left: 10px;
 
-  h3 {
-    margin: 7px 0px;
+  h3,
+  label {
+    text-align: left;
+    margin: 0;
   }
 `;
 
 export const StyledFormikField = styled(Field)`
-  margin-bottom: 10px;
+  margin-bottom: 7px;
 `;
 
 export const StyledFormikErrorMessage = styled(ErrorMessage)`
-  margin-bottom: 10px;
+  margin-bottom: 7px;
   color: red;
 `;

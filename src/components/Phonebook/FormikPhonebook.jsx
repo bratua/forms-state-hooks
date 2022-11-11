@@ -12,11 +12,19 @@ export class FormikPhonebook extends Component {
   };
 
   handleSubmitForm = ({ name, number }) => {
+    if (this.checkSameName(name)) {
+      return alert(`${name} уже в списке контактов!`);
+    }
+
     this.setState(prevState => {
       return {
         contacts: [...prevState.contacts, { name, number, id: nanoid() }],
       };
     });
+  };
+
+  checkSameName = name => {
+    return this.state.contacts.find(el => el.name === name);
   };
 
   filterChange = e => {
@@ -32,6 +40,16 @@ export class FormikPhonebook extends Component {
     );
   };
 
+  deleteContact = idContact => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== idContact
+        ),
+      };
+    });
+  };
+
   render() {
     const filtredContacts = this.filtred();
 
@@ -39,7 +57,7 @@ export class FormikPhonebook extends Component {
       <Box
         width="300px"
         m="20px"
-        textAlign="left"
+        textAlign="center"
         border="2px solid"
         bc="black"
         borderRadius="10px"
@@ -48,7 +66,10 @@ export class FormikPhonebook extends Component {
       >
         <FormikForm onSubmitForm={this.handleSubmitForm} />
         <Filter value={this.state.filter} onChange={this.filterChange} />
-        <Contacts contacts={filtredContacts} />
+        <Contacts
+          contacts={filtredContacts}
+          onDeleteContact={this.deleteContact}
+        />
       </Box>
     );
   }
