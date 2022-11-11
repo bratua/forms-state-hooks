@@ -20,7 +20,7 @@ export const StyledForm = styled.form`
 export const StyledFormikForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   margin-left: 10px;
 

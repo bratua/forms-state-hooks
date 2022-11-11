@@ -39,7 +39,7 @@ export class FormikPhonebook extends Component {
       <Box
         width="300px"
         m="20px"
-        textAlign="center"
+        textAlign="left"
         border="2px solid"
         bc="black"
         borderRadius="10px"
