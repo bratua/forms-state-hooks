@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { Statistics } from 'components/Feedback/Statistics/Statistics';
 import { Section } from 'components/Section/Section';
 import { FeedbackOptions } from 'components/Feedback/FeedbackOptions/FeedbackOptions';
@@ -7,64 +7,85 @@ import Box from 'components/Box/Box';
 
 const INIT_STATE = { good: 0, neutral: 0, bad: 0 };
 
-export class Feedback extends Component {
-  state = INIT_STATE;
+export const Feedback = () => {
+  const [good, setGood] = useState(INIT_STATE.good);
+  const [neutral, setNeutral] = useState(INIT_STATE.neutral);
+  const [bad, setBad] = useState(INIT_STATE.bad);
 
-  countTotalFeedback = ({ good, neutral, bad }) => {
+  const countTotalFeedback = (good, neutral, bad) => {
     return good + neutral + bad;
   };
 
-  countPositiveFeedbackPercentage = ({ good, neutral, bad }) => {
+  const countPositiveFeedbackPercentage = (good, neutral, bad) => {
     return Math.round((good * 100) / (good + neutral + bad));
   };
 
-  onLeaveFeedback = target => {
-    if (target === 'cls') {
-      this.setState(INIT_STATE);
-      return;
+  const onLeaveFeedback = target => {
+    switch (target) {
+      case 'good':
+        setGood(good + 1);
+        break;
+
+      case 'neutral':
+        setNeutral(neutral + 1);
+        break;
+
+      case 'bad':
+        setBad(bad + 1);
+        break;
+
+      case 'cls':
+        setGood(0);
+        setBad(0);
+        setNeutral(0);
+        break;
+
+      default:
+        break;
     }
 
-    this.setState(prevState => {
-      return { [target]: prevState[target] + 1 };
-    });
+    if (target === 'cls') {
+      setGood(0);
+      setBad(0);
+      setNeutral(0);
+      return;
+    }
   };
 
-  render() {
-    const renderCondition =
-      this.state.good || this.state.neutral || this.state.bad;
+  // const renderCondition = true;
+  const renderCondition = good || neutral || bad;
+  // console.log('renderCondition', renderCondition);
 
-    const statisticsBlock = (
-      <Statistics
-        good={this.state.good}
-        neutral={this.state.neutral}
-        bad={this.state.bad}
-        total={this.countTotalFeedback(this.state)}
-        positivePercentage={this.countPositiveFeedbackPercentage(this.state)}
-      />
-    );
-    const notificationMsg = <Notification message="There is no feedback!!" />;
+  const notificationMsg = <Notification message="There is no feedback!!" />;
+  const statisticsBlock = (
+    <Statistics
+      good={good}
+      neutral={neutral}
+      bad={bad}
+      total={countTotalFeedback(good, neutral, bad)}
+      positivePercentage={countPositiveFeedbackPercentage(good, neutral, bad)}
+    />
+  );
 
-    return (
-      <Box
-        width="300px"
-        m="20px"
-        textAlign="center"
-        border="2px solid"
-        bc="black"
-        borderRadius="10px"
-        backgroundColor="#0caabf"
-      >
-        <Section title="Please leave feedback">
-          <FeedbackOptions
-            options={this.state}
-            onLeaveFeedback={this.onLeaveFeedback}
-          ></FeedbackOptions>
-        </Section>
-
-        <Section title="Statistics">
-          {renderCondition ? statisticsBlock : notificationMsg}
-        </Section>
-      </Box>
-    );
-  }
-}
+  return (
+    <Box
+      width="300px"
+      m="20px"
+      textAlign="center"
+      border="2px solid"
+      bc="black"
+      borderRadius="10px"
+      backgroundColor="#0caabf"
+    >
+      <Section title="Please leave feedback">
+        <FeedbackOptions
+          options={INIT_STATE}
+          onLeaveFeedback={onLeaveFeedback}
+        ></FeedbackOptions>
+      </Section>
+      <Section title="Statistics">
+        {renderCondition ? statisticsBlock : notificationMsg}
+      </Section>
+    </Box>
+  );
+};

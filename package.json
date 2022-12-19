@@ -1,8 +1,8 @@
 {
-  "name": "R2-forms",
+  "name": "forms-state-hooks",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bratua.github.io/R2-forms/",
+  "homepage": "https://bratua.github.io/forms-state-hooks/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",

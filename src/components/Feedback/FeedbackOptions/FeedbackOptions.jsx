@@ -5,22 +5,11 @@ import { StyledBtn } from './FeedbackOptions.styled';
 export class FeedbackOptions extends Component {
   onClick = e => {
     this.props.onLeaveFeedback(e.currentTarget.name);
+    // console.log(e.currentTarget.name);
   };
 
   render() {
     const buttonsName = Object.keys(this.props.options);
-
-    //   return (
-    // <button
-    //   key={btnName}
-    //   name={btnName}
-    //   type="button"
-    //   onClick={this.onClick}
-    // >
-    //   {btnName}
-    // </button>
-    //   );
-    // });
 
     return (
       <Box
