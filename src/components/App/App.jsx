@@ -9,8 +9,8 @@ export class App extends Component {
     return (
       <Box display="flex">
         хай!
-        <Feedback />
-        {/* <Phonebook /> */}
+        {/* <Feedback /> */}
+        <Phonebook />
         {/* <FormikPhonebook /> */}
       </Box>
     );
