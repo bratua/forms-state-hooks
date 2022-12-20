@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { Section } from 'components/Section/Section';
 import { StyledContactsLi, StyledContactsUl } from './Contacts.styled';
 import { Notification } from 'components/Feedback/Notification/Notification';
@@ -21,9 +20,9 @@ export const Contacts = ({
 
   const isContactsEmpty = contacts.length === 0 && filterValue.length === 0;
   const contactFound = contacts.length > 0;
-  console.log('contacts.length > 0', contactFound);
-  console.log('isContactsEmpty', isContactsEmpty);
-  console.log('contacts', contacts);
+  // console.log('contacts.length > 0', contactFound);
+  // console.log('isContactsEmpty', isContactsEmpty);
+  // console.log('contacts', contacts);
 
   const contactsBlock = (
     <Section title="Contacts">

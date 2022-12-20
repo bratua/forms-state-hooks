@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import Box from 'components/Box/Box';
 import { nanoid } from 'nanoid';
 // import { Input } from './Input/Input';
@@ -36,14 +36,14 @@ export const Phonebook = () => {
 
   const filtred = () => {
     // const { filter, contacts } = this.state;
-    console.log('contacts', contacts);
-    console.log('filter', filter);
+    // console.log('contacts', contacts);
+    // console.log('filter', filter);
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
   };
-  console.log('filtred', filtred());
+  // console.log('filtred', filtred());
 
   // const filtredContacts = filtred();
 

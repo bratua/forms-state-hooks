@@ -1,4 +1,4 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
 // import Box from 'components/Box/Box';
@@ -7,22 +7,20 @@ import { StyledForm } from './Form.styled';
 export const Form = ({ onSubmitForm }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  console.log('state', { name, number });
 
   const nameId = nanoid();
   const numberId = nanoid();
 
   const handleInputChange = e => {
     const { name, value } = e.currentTarget;
-    // this.setState({ [name]: value });
-    console.log(e.currentTarget, name, value);
-    switch (e.currentTarget) {
-      case name:
+    switch (name) {
+      case 'name':
         setName(value);
         break;
 
-      case number:
+      case 'number':
         setNumber(value);
+
         break;
 
       default:
