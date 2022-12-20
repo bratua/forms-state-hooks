@@ -4,6 +4,7 @@ import { Section } from 'components/Section/Section';
 import { FeedbackOptions } from 'components/Feedback/FeedbackOptions/FeedbackOptions';
 import { Notification } from 'components/Feedback/Notification/Notification';
 import Box from 'components/Box/Box';
+import { useEffect } from 'react';
 
 const INIT_STATE = { good: 0, neutral: 0, bad: 0 };
 
@@ -11,14 +12,22 @@ export const Feedback = () => {
   const [good, setGood] = useState(INIT_STATE.good);
   const [neutral, setNeutral] = useState(INIT_STATE.neutral);
   const [bad, setBad] = useState(INIT_STATE.bad);
+  const [totalFeedback, setTotalFeedback] = useState(0);
+  const [positiveFeedbackPercentage, setPositiveFeedbackPercentage] =
+    useState(0);
 
-  const countTotalFeedback = (good, neutral, bad) => {
-    return good + neutral + bad;
-  };
+  useEffect(() => {
+    const countTotalFeedback = () => {
+      return good + neutral + bad;
+    };
 
-  const countPositiveFeedbackPercentage = (good, neutral, bad) => {
-    return Math.round((good * 100) / (good + neutral + bad));
-  };
+    const countPositiveFeedbackPercentage = () => {
+      return Math.round((good * 100) / (good + neutral + bad));
+    };
+
+    setTotalFeedback(countTotalFeedback());
+    setPositiveFeedbackPercentage(countPositiveFeedbackPercentage());
+  }, [bad, good, neutral]);
 
   const onLeaveFeedback = target => {
     switch (target) {
@@ -52,18 +61,15 @@ export const Feedback = () => {
     }
   };
 
-  // const renderCondition = true;
   const renderCondition = good || neutral || bad;
-  // console.log('renderCondition', renderCondition);
-
   const notificationMsg = <Notification message="There is no feedback!!" />;
   const statisticsBlock = (
     <Statistics
       good={good}
       neutral={neutral}
       bad={bad}
-      total={countTotalFeedback(good, neutral, bad)}
-      positivePercentage={countPositiveFeedbackPercentage(good, neutral, bad)}
+      total={totalFeedback}
+      positivePercentage={positiveFeedbackPercentage}
     />
   );
 
