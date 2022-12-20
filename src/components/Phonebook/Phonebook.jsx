@@ -10,7 +10,7 @@ export const Phonebook = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
-  const handleSubmitForm = (name, number) => {
+  const handleSubmitForm = ({ name, number }) => {
     if (checkSameName(name)) {
       return alert(`${name} уже в списке контактов!`);
     }
@@ -26,17 +26,7 @@ export const Phonebook = () => {
   };
 
   const deleteContact = idContact => {
-    setContacts(prevContacts => [
-      prevContacts.filter(contact => contact.id !== idContact),
-    ]);
-
-    // this.setState(prevState => {
-    //   return {
-    //     contacts: prevState.contacts.filter(
-    //       contact => contact.id !== idContact
-    //     ),
-    //   };
-    // });
+    setContacts(contacts.filter(contact => contact.id !== idContact));
   };
 
   const filterChange = e => {
@@ -46,10 +36,14 @@ export const Phonebook = () => {
 
   const filtred = () => {
     // const { filter, contacts } = this.state;
+    console.log('contacts', contacts);
+    console.log('filter', filter);
+
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter)
     );
   };
+  console.log('filtred', filtred());
 
   // const filtredContacts = filtred();
 
@@ -65,9 +59,8 @@ export const Phonebook = () => {
       pb="20px"
     >
       <Form onSubmitForm={handleSubmitForm} />
-      {/* <Filter value={this.state.filter} onChange={this.filterChange} /> */}
       <Contacts
-        contacts={() => filtred()}
+        contacts={filtred()}
         onDeleteContact={deleteContact}
         filterValue={filter}
         filterOnChange={filterChange}

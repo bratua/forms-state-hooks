@@ -4,31 +4,31 @@ import { StyledContactsLi, StyledContactsUl } from './Contacts.styled';
 import { Notification } from 'components/Feedback/Notification/Notification';
 import { Filter } from 'components/Phonebook/Filter/Filter';
 
-export const Contacts = () => {
+export const Contacts = ({
+  contacts,
+  onDeleteContact,
+  filterValue,
+  filterOnChange,
+}) => {
   const renderContacts = contacts => {
     return contacts.map(contact => (
       <StyledContactsLi key={contact.id}>
-        <button onClick={() => this.props.onDeleteContact(contact.id)}>
-          Del
-        </button>
+        <button onClick={() => onDeleteContact(contact.id)}>Del</button>
         {contact.name}: {contact.number}
       </StyledContactsLi>
     ));
   };
 
-  const { contacts } = this.props;
-  const isContactsEmpty =
-    contacts.length === 0 && this.props.filterValue.length === 0;
+  const isContactsEmpty = contacts.length === 0 && filterValue.length === 0;
   const contactFound = contacts.length > 0;
+  console.log('contacts.length > 0', contactFound);
+  console.log('isContactsEmpty', isContactsEmpty);
+  console.log('contacts', contacts);
 
-  console.log(contactFound);
   const contactsBlock = (
     <Section title="Contacts">
-      <Filter
-        value={this.props.filterValue}
-        onChange={this.props.filterOnChange}
-      />
-      <StyledContactsUl>{this.renderContacts(contacts)}</StyledContactsUl>
+      <Filter value={filterValue} onChange={filterOnChange} />
+      <StyledContactsUl>{renderContacts(contacts)}</StyledContactsUl>
       {contactFound || <Notification message="Not found" />}
     </Section>
   );
