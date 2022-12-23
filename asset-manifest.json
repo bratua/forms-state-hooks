@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/forms-state-hooks/static/css/main.7acaea2f.css",
-    "main.js": "/forms-state-hooks/static/js/main.0ee976fe.js",
+    "main.js": "/forms-state-hooks/static/js/main.960a6ac7.js",
     "index.html": "/forms-state-hooks/index.html",
     "main.7acaea2f.css.map": "/forms-state-hooks/static/css/main.7acaea2f.css.map",
-    "main.0ee976fe.js.map": "/forms-state-hooks/static/js/main.0ee976fe.js.map"
+    "main.960a6ac7.js.map": "/forms-state-hooks/static/js/main.960a6ac7.js.map"
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.0ee976fe.js"
+    "static/js/main.960a6ac7.js"
   ]
 }
